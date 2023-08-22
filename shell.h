@@ -27,6 +27,11 @@ char *get_line();
 void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 /* file handling */
+void file_handling(char *line, int i, FILE *fd, char **argv);
 void file_reader(char *fl, char **argv);
+
+unsigned int mirror(char c, const char *s);
+char *str_tok(char *s, const char *delim);
+char **tokenizer(char *line);
 
 #endif /* SHELL_H */

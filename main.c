@@ -16,6 +16,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 
 	if (argv[1] != NULL)
 		file_reader(argv[1], argv);
+
 	if (signal(SIGINT, handle_signal) == SIG_ERR)
 	{
 		perror("couldn't catch signal");
@@ -25,6 +26,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 	while (entry)
 	{
 		i++;
+
 		if (isatty(STDIN_FILENO))
 			prompt();
 		else
@@ -44,6 +46,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 		else
 			st = execute(av_token, line, i, argv);
+
 		free_buffers(av_token, line);
 	}
 	return (entry);
