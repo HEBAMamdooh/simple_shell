@@ -5,21 +5,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
-#include <sys/types.h>
 #include <string.h>
-#include <sys/wait.h>
 #include <signal.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 /* macro definition */
 #define BUFSIZE 1024
 #define PRINTER(ch) (write(STDOUT_FILENO, ch, strlen(ch)))
 
-/* Start command reading */
+/* Command reading */
 void prompt(void);
+void handle_signal(int n);
+void comment_handle(char *line);
 char *get_line();
+
+/* Memory Check */
+void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 /* file handling */
 void file_reader(char *fl, char **argv);

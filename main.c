@@ -16,7 +16,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 
 	if (argv[1] != NULL)
 		file_reader(argv[1], argv);
-	if (signal(SIGINT, sigHandler) == SIG_ERR)
+	if (signal(SIGINT, handle_signal) == SIG_ERR)
 	{
 		perror("couldn't catch signal");
 		exit(EXIT_FAILURE);
@@ -46,6 +46,5 @@ int main(__attribute__((unused)) int argc, char **argv)
 			st = execute(av_token, line, i, argv);
 		free_buffers(av_token, line);
 	}
-
-    return (entry);
+	return (entry);
 }

@@ -1,11 +1,31 @@
 #include "shell.h"
 
 /**
+ * comment_handle - handling comments in the command.
+ *
+ * @line: The Checked line.
+ * Return: Nothing.
+ */
+
+void comment_handle(char *line)
+{
+	int i;
+
+	for (i = 0; line[i] != '\0'; i++)
+	{
+		if (line[i] == '#')
+		{
+			line[i] = '\0';
+			break;
+		}
+	}
+}
+
+/**
  * get_line - read input commands from the STDIN stream.
  *
  * Return: input.
  */
-
 char *get_line()
 {
 	int i, buffSZ = BUFSIZE, read_d;
@@ -21,6 +41,7 @@ char *get_line()
 	{
 		fflush(stdin);
 		read_d = read(STDIN_FILENO, &c, 1);
+
 		if (read_d == 0)
 		{
 			free(line_ptr);
@@ -34,12 +55,12 @@ char *get_line()
 		}
 		if (i >= buffSZ)
 		{
-			line_ptr = _realloc(line_ptr, buffSZ, buffSZ + 1);
+			line_ptr = re_alloc(line_ptr, buffSZ, buffSZ + 1);
 			if (line_ptr == NULL)
 				return (NULL);
 		}
 	}
 	line_ptr[i] = '\0';
-	handle_comments(line_ptr);
+	comment_handle(line_ptr);
 	return (line_ptr);
 }
