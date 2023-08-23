@@ -68,7 +68,6 @@ int display_env(__attribute__((unused)) char **t_argv,
  *
  * Return: Nothing.
  */
-
 void exit_sh(char **t_argv, char *line, char **argv, int c)
 {
 	int stat, i = 0;
@@ -95,4 +94,75 @@ void exit_sh(char **t_argv, char *line, char **argv, int c)
 			exit(stat);
 		}
 	}
+}
+
+/**
+ * _echo - handle all echo related command.
+ *
+ * @error: state of execution.
+ * @t_argv: tokenized read line.
+ *
+ * Return: 0
+ */
+int _echo(char **t_argv, int error)
+{
+	char *path;
+	unsigned int pid = getppid();
+
+	if (str_cmp(t_argv[1], "$?", 2) == 0)
+	{
+		print_number_in(error);
+		PRINTER("\n");
+	}
+	else if (str_cmp(t_argv[1], "$$", 2) == 0)
+	{
+		print_number(pid);
+		PRINTER("\n");
+	}
+	else if (str_cmp(t_argv[1], "$PATH", 5) == 0)
+	{
+		path = _getenv("PATH");
+		PRINTER(path);
+		PRINTER("\n");
+		free(path);
+	}
+	else
+		return (print_echo(t_argv));
+	return (1);
+}
+
+/**
+ * print_echo - executes common echo uses.
+ *
+ * @t_argv: tokenized read input.
+ *
+ * Return: 0 -> success,
+ *		-1 -> fail.
+ */
+int print_echo(char **t_argv)
+{
+	pid_t child_pid;
+	int status;
+
+	child_pid = fork();
+	if (child_pid == 0)
+	{
+		if (execve("/bin/echo", t_argv, environ) == -1)
+		{
+			return (-1);
+		}
+		exit(EXIT_FAILURE);
+	}
+	else if (child_pid < 0)
+	{
+		return (-1);
+	}
+	else
+	{
+		do
+		{
+			waitpid(child_pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
+	return (1);
 }

@@ -30,3 +30,40 @@ int _atoi(char *s)
 	}
 	return (num);
 }
+
+/**
+ * print_number - prints an unsigned int.
+ *
+ * @n: the integer.
+ *
+ * Return: nothing.
+ */
+void print_number(unsigned int n)
+{
+	unsigned int x = n;
+
+	if ((x / 10) > 0)
+		print_number(x / 10);
+	putchar(x % 10 + '0');
+}
+
+/**
+ * print_number_in - print integer.
+ *
+ * @n: the integer.
+ *
+ * Return: nothing.
+ */
+void print_number_in(int n)
+{
+	unsigned int t = n;
+
+	if (n < 0)
+	{
+		putchar('-');
+		t = -t;
+	}
+	if ((t / 10) > 0)
+		print_number(t / 10);
+	putchar(t % 10 + '0');
+}

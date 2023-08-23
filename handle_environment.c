@@ -12,7 +12,7 @@ void _setenv(char **new_env)
 	int i;
 
 	for (i = 0; environ[i]; i++)
-		new_env[i] = _strdup(environ[i]);
+		new_env[i] = str_dup(environ[i]);
 	new_env[i] = NULL;
 }
 
