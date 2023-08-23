@@ -6,7 +6,6 @@
  * @line: The Checked line.
  * Return: Nothing.
  */
-
 void comment_handle(char *line)
 {
 	int i;

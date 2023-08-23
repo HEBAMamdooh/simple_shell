@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * re_alloc - resize memory block reserved by a pointer.
  *
@@ -7,9 +8,8 @@
  * @new_size: new size to replace the old_size memory block.
  *
  * Return: memory block on success,
- *		NULL -> on fail.
+ *		NULL on fail.
  */
-
 void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *memory;

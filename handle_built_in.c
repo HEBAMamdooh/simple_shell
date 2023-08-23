@@ -5,9 +5,8 @@
  *
  * @argv: Read input command.
  * Return: 0 -> success,
- *		-1 -> on fail.
+ *		-1 -> fail.
  */
-
 int check_builtin(char **argv)
 {
 	int i = 0;
@@ -30,12 +29,13 @@ int check_builtin(char **argv)
 }
 
 /**
- * builtin_handling - handle builtin commands
+ * builtin_handling - handle builtin commands.
+ *
  * @line: tokenized read input
  * @err: state after execution
- * Return: -1 if it fails, 0 otherwise
+ * Return: -1 -> fail,
+ *		0 -> otherwise
  */
-
 int builtin_handling(char **line, int err)
 {
 	int i = 0;

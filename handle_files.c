@@ -10,7 +10,6 @@
  *
  * Return: Nothing.
  */
-
 void file_handling(char *line, int i, FILE *fd, char **argv)
 {
 	char **tokens;
@@ -18,7 +17,7 @@ void file_handling(char *line, int i, FILE *fd, char **argv)
 
 	tokens = tokenizer(line);
 
-	if (_strncmp(tokens[0], "exit", 4) == 0)
+	if (str_cmp(tokens[0], "exit", 4) == 0)
 	{
 		exit_file(tokens, line, fd);
 	}
@@ -41,7 +40,6 @@ void file_handling(char *line, int i, FILE *fd, char **argv)
  *
  * Return: 0 on exit.
  */
-
 void file_reader(char *fl, char **argv)
 {
 	FILE *fp;

@@ -30,18 +30,46 @@ typedef struct built
 } builtin;
 
 /* Command reading */
-void prompt(void);
 void handle_signal(int n);
+void prompt(void);
+
+/* built in handling */
+void exit_sh(char **t_argv, char *line, char **argv, int c);
+int _cd(char **t_argv, __attribute__((unused))int error);
+int display_env(__attribute__((unused)) char **t_argv,
+		__attribute__((unused)) int error);
+
+/* environment */
+void _setenv(char **new_env);
+char *_getenv(char *env_n);
+
+/* errors */
+void custom_error(char **argv, int c, char **frscommand);
+void display_err(char **argv, int c,char *frscommand);
+
+/* file handling */
+void file_handling(char *line, int i, FILE *fd, char **argv);
+void file_reader(char *fl, char **argv);
+
+/* lines */
 void comment_handle(char *line);
 char *get_line();
 
 /* Memory Check */
 void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-/* file handling */
-void file_handling(char *line, int i, FILE *fd, char **argv);
-void file_reader(char *fl, char **argv);
+/* settings */
+int _strcmp(char *s1, char *s2);
+int str_cmp(const char *s1, const char *s2, size_t n);
+int _isalpha(int c);
+int num_len(int num);
+char *_itost(int num);
+void array_rev(char *arr, int len);
 
+/* settings */
+int _atoi(char *s);
+
+/* Tokens */
 unsigned int mirror(char c, const char *s);
 char *str_tok(char *s, const char *delim);
 char **tokenizer(char *line);

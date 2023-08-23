@@ -37,7 +37,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		av_token = tokenizer(line);
 
 		if (_strcmp(av_token[0], "exit") == 0)
-			_exit_sh(av_token, line, argv, i);
+			exit_sh(av_token, line, argv, i);
 		else if (check_builtin(av_token) == 0)
 		{
 			st = handle_builtin(av_token, st);
