@@ -1,6 +1,4 @@
 #include "shell.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * file_handling - tokenizes the read input from file.

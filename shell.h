@@ -17,6 +17,18 @@
 #define BUFSIZE 1024
 #define PRINTER(ch) (write(STDOUT_FILENO, ch, strlen(ch)))
 
+/**
+ * builtin struct - struct that helps to handle built in commands.
+ *
+ * @blt_cmd: command name.
+ * @fun: function to execute that matches the command.
+ */
+typedef struct built
+{
+	char *blt_cmd;
+	int (*fun)(char **line, int err);
+} builtin;
+
 /* Command reading */
 void prompt(void);
 void handle_signal(int n);
