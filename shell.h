@@ -61,7 +61,7 @@ void free_env(char **env);
 
 /* errors */
 void custom_error(char **argv, int c, char **frscommand);
-void display_error(char **argv, int c, char *frscommand);
+void display_error(char *frscommand, int c, char **argv);
 
 /* file handling */
 void file_handling(char *line, int i, FILE *fd, char **argv);

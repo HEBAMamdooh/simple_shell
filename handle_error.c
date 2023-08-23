@@ -32,7 +32,7 @@ void custom_error(char **argv, int c, char **frscommand)
  *
  * @argv: Nothing
  */
-void display_error(char **argv, int c, char *frscommand)
+void display_error(char *frscommand, int c, char **argv);
 {
 	char *er = _itost(c);
 
