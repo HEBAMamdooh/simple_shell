@@ -17,7 +17,6 @@ extern char **environ;
 
 /* macro definition */
 #define BUFSIZE 1024
-#define DELIM " \t\r\n\a"
 #define PRINTER(ch) (write(STDOUT_FILENO, ch, strlen(ch)))
 
 /**
