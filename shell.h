@@ -38,7 +38,7 @@ void prompt(void);
 
 /* built in handling */
 int check_builtin(char **argv);
-int builtin_handling(char **line, int error);
+int handle_builtin(char **line, int error);
 void comment_handle(char *line);
 int _cd(char **t_argv, __attribute__((unused))int error);
 int display_env(__attribute__((unused)) char **t_argv,
@@ -66,6 +66,7 @@ char *get_line();
 
 /* Memory Check */
 void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void free_buffers(char **t_argv, char *line);
 
 /* Path */
 char *concat_path(char *tok, char *path);

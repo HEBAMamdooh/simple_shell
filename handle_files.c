@@ -18,18 +18,14 @@ void file_handling(char *line, int i, FILE *fd, char **argv)
 	tokens = tokenizer(line);
 
 	if (str_cmp(tokens[0], "exit", 4) == 0)
-	{
 		exit_file(tokens, line, fd);
-	}
 	else if (check_builtin(tokens) == 0)
 	{
 		ret = handle_builtin(tokens, ret);
 		free(tokens);
 	}
 	else
-	{
 		ret = execute(tokens, line, i, argv);
-	}
 }
 
 /**

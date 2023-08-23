@@ -29,7 +29,7 @@ int check_builtin(char **argv)
 }
 
 /**
- * builtin_handling - handle builtin commands.
+ * handle_builtin - handle builtin commands.
  *
  * @line: tokenized read input.
  * @error: state after execution.
@@ -37,7 +37,7 @@ int check_builtin(char **argv)
  * Return: -1 -> fail,
  *		0 -> otherwise
  */
-int builtin_handling(char **line, int error)
+int handle_builtin(char **line, int error)
 {
 	int i = 0;
 	builtin builtins[] = {

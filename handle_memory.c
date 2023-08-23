@@ -49,3 +49,19 @@ void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr);
 	return (memory);
 }
+
+/**
+ * free_buffers - frees any buffers for no mem leaks.
+ *
+ * @t_argv: pointer to free.
+ * @line: pointer to char.
+ *
+ * Return: Nothing.
+ */
+void free_buffers(char **t_argv, char *line)
+{
+	free(t_argv);
+	free(line);
+	t_argv = NULL;
+	line = NULL;
+}
