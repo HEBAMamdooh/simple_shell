@@ -21,7 +21,7 @@ extern char **environ;
 #define PRINTER(ch) (write(STDOUT_FILENO, ch, strlen(ch)))
 
 /**
- * builtin struct - struct that helps to handle built in commands.
+ * built struct - struct that helps to handle built in commands.
  *
  * @blt_cmd: command name.
  * @fun: function to execute that matches the command.
@@ -41,6 +41,13 @@ int check_builtin(char **argv);
 int handle_builtin(char **line, int error);
 void comment_handle(char *line);
 int _cd(char **t_argv, __attribute__((unused))int error);
+
+/**
+ * display_env - display the env var.
+ * @t_argv: tokenized read input
+ * @error: state of execution
+ * Return: 0
+ */
 int display_env(__attribute__((unused)) char **t_argv,
 		__attribute__((unused)) int error);
 void exit_sh(char **t_argv, char *line, char **argv, int c);
