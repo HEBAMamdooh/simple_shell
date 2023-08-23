@@ -159,8 +159,7 @@ int print_echo(char **t_argv)
 	}
 	else
 	{
-		do
-		{
+		do {
 			waitpid(child_pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
