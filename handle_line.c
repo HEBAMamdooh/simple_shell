@@ -1,26 +1,6 @@
 #include "shell.h"
 
 /**
- * comment_handle - handling comments in the command.
- *
- * @line: The Checked line.
- * Return: Nothing.
- */
-void comment_handle(char *line)
-{
-	int i;
-
-	for (i = 0; line[i] != '\0'; i++)
-	{
-		if (line[i] == '#')
-		{
-			line[i] = '\0';
-			break;
-		}
-	}
-}
-
-/**
  * get_line - read input commands from the STDIN stream.
  *
  * Return: input.

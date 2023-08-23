@@ -71,3 +71,35 @@ void file_reader(char *fl, char **argv)
 		PRINTER(": No such file or directory\n");
 	}
 }
+
+/**
+ * exit_file - exits the file.
+ *
+ * @line: read line from a file.
+ * @t_argv: tokenized read line from file.
+ * @fd: file descriptor.
+ *
+ * Return: nothing
+ */
+void exit_file(char **t_argv, char *line, FILE *fd)
+{
+	int status, i = 0;
+
+	if (t_argv[1] == NULL)
+	{
+		free(line);
+		free(t_argv);
+		fclose(fd);
+		exit(errno);
+	}
+	while (t_argv[1][i])
+	{
+		if (_isalpha(t_argv[1][i++]) < 0)
+			perror("illegal number");
+	}
+	status = _atoi(t_argv[1]);
+	free(line);
+	free(t_argv);
+	fclose(fd);
+	exit(status);
+}

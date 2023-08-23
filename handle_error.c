@@ -25,14 +25,14 @@ void custom_error(char **argv, int c, char **frscommand)
 }
 
 /**
- * display_err - display error.
+ * display_error - display error.
  *
  * @frscommand: 1st command from read line.
  * @c: loop error counter.
  *
  * @argv: Nothing
  */
-void display_err(char **argv, int c, char *frscommand)
+void display_error(char **argv, int c, char *frscommand)
 {
 	char *er = _itost(c);
 

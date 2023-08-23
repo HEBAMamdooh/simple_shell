@@ -37,6 +37,9 @@ void handle_signal(int n);
 void prompt(void);
 
 /* built in handling */
+int check_builtin(char **argv);
+int builtin_handling(char **line, int error);
+void comment_handle(char *line);
 int _cd(char **t_argv, __attribute__((unused))int error);
 int display_env(__attribute__((unused)) char **t_argv,
 		__attribute__((unused)) int error);
@@ -47,21 +50,26 @@ int print_echo(char **t_argv);
 /* environment */
 void _setenv(char **new_env);
 char *_getenv(char *env_n);
+void free_env(char **env);
 
 /* errors */
 void custom_error(char **argv, int c, char **frscommand);
-void display_err(char **argv, int c,char *frscommand);
+void display_error(char **argv, int c, char *frscommand);
 
 /* file handling */
 void file_handling(char *line, int i, FILE *fd, char **argv);
 void file_reader(char *fl, char **argv);
+void exit_file(char **t_argv, char *line, FILE *fd);
 
 /* lines */
-void comment_handle(char *line);
 char *get_line();
 
 /* Memory Check */
 void *re_alloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
+/* Path */
+char *concat_path(char *tok, char *path);
+int get_path(char **line);
 
 /* settings */
 int _strcmp(char *s1, char *s2);
@@ -79,6 +87,7 @@ char *str_dup(char *str);
 int _atoi(char *s);
 void print_number(unsigned int n);
 void print_number_in(int n);
+int execute(char **t_argv, char *line, int c, char **argv);
 
 /* Tokens */
 unsigned int mirror(char c, const char *s);

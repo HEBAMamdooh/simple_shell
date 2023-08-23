@@ -31,12 +31,13 @@ int check_builtin(char **argv)
 /**
  * builtin_handling - handle builtin commands.
  *
- * @line: tokenized read input
- * @err: state after execution
+ * @line: tokenized read input.
+ * @error: state after execution.
+ *
  * Return: -1 -> fail,
  *		0 -> otherwise
  */
-int builtin_handling(char **line, int err)
+int builtin_handling(char **line, int error)
 {
 	int i = 0;
 	builtin builtins[] = {
@@ -49,9 +50,29 @@ int builtin_handling(char **line, int err)
 	{
 		if (_strcmp(line[0], (builtins + i)->blt_cmd) == 0)
 		{
-			return ((builtins + i)->fun(line, err));
+			return ((builtins + i)->fun(line, error));
 		}
 		i++;
 	}
 	return (-1);
+}
+
+/**
+ * comment_handle - handling comments in the command.
+ *
+ * @line: The Checked line.
+ * Return: Nothing.
+ */
+void comment_handle(char *line)
+{
+	int i;
+
+	for (i = 0; line[i] != '\0'; i++)
+	{
+		if (line[i] == '#')
+		{
+			line[i] = '\0';
+			break;
+		}
+	}
 }
