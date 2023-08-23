@@ -24,7 +24,7 @@ extern char **environ;
 * struct built - struct.
 * Description: help to handle built in commands.
 * @blt_cmd: command name.
-* @func: function to execute that matches the command.
+* @fun: function to execute that matches the command.
 */
 typedef struct built
 {
